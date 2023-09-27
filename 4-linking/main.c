@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-extern int fact(int n);
+extern double fact(int n);
 
 int main(void)
 {
