@@ -90,6 +90,21 @@ function compile_and_run() {
 }
 
 
+function compile() {
+
+    BINARY=$1
+    MAKE_RULE=$2
+
+    cd $SOURCEDIR
+
+    if ! make ${MAKE_RULE} >/dev/null;
+    then
+        failure "Non è stato possibile compilare il programma"
+    fi
+
+}
+
+
 # https://unix.stackexchange.com/a/426817
 shopt -s nullglob
 

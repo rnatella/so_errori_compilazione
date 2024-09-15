@@ -1,4 +1,4 @@
-# Esercitazione: come correggere gli errori più comuni di compilazione
+# Esercitazione: come interpretare e correggere gli errori più comuni di compilazione
 
 ![Points badge](../../blob/badges/.github/badges/points.svg)
 
@@ -41,10 +41,11 @@ find_char.c:43:23: error: ‘lenght’ undeclared (first use in this function); 
 Gli ulteriori messaggi di errore sono conseguenza di questi errori.
 
 <details>
-  <summary>Suggerimenti</summary>
-  1. Per risolvere il primo errore, aggiungere la dichiarazione della funzione all'inizio del file, prima del main.
-  2. Per il secondo errore, è necessario aggiungere un `#include` della libreria `string.h`.
-  3. Per il terzo errore, occorre correggere il nome della variabile (deve combaciare con la dichiarazione).
+  <summary><b>Suggerimenti</b></summary>
+
+   1. Per risolvere il primo errore, aggiungere la dichiarazione della funzione all'inizio del file, prima del main.
+   2. Per il secondo errore, è necessario aggiungere un `#include` della libreria `string.h`.
+   3. Per il terzo errore, occorre correggere il nome della variabile (deve combaciare con la dichiarazione).
 </details>
 
 
@@ -72,7 +73,8 @@ Nel caso che i token non rispettino le regole del linguaggio, il compilatore seg
 **Esercizio**: Risolvere il [programma con errori di sintassi, nella cartella "2-syntax/"](2-syntax)
 
 <details>
-  <summary>Suggerimenti</summary>
+  <summary><b>Suggerimenti</b></summary>
+
   1. Aggiungere il `;` mancante (va inserito alla linea precedente all'errore)
   2. Aggiungere la parentesi tonda mancante
   3. Aggiungere la virgola mancante
@@ -93,7 +95,8 @@ Occorre prestare attenzione alla corretta sintassi delle istruzioni del preproce
 **Esercizio**: Risolvere il [programma con errore nelle direttive al pre-processore, nella cartella "3-preprocessor/"](3-preprocessor)
 
 <details>
-  <summary>Suggerimenti</summary>
+  <summary><b>Suggerimenti</b></summary>
+
   1. Rimuovere `;` dal valore indicato in `#define`
 </details>
 
@@ -127,7 +130,8 @@ Nella fase di collegamento, il *linker* controllerà che le variabili e funzioni
 **Esercizio**: Risolvere il [programma con errore in fase di linking, nella cartella "4-linking/"](4-linking)
 
 <details>
-  <summary>Suggerimenti</summary>
+  <summary><b>Suggerimenti</b></summary>
+
   1. Nel file `main.c`, correggere il nome della funzione nella dichiarazione esterna
 </details>
 
@@ -148,7 +152,8 @@ Per predisporre il caricamento delle librerie dinamiche, è necessario compilare
 **Esercizio**: Risolvere il [programma con errore nell'uso di librerie dinamiche, nella cartella "5-lib/"](5-lib). Consultare il manuale della funzione `sqrt` per determinare quale libreria è necessaria, e correggere il `Makefile`.
 
 <details>
-  <summary>Suggerimenti</summary>
+  <summary><b>Suggerimenti</b></summary>
+
   1. Lanciare il comando `man sqrt` per consultare il manuale della funzione `sqrt()`. Premere `q` per uscire dal manuale.
   2. Modificare la prima regola nel `Makefile`, aggiungendo l'opzione `-l` per collegare la libreria `libm`. L'opzione è indicata nel manuale.
 </details>
