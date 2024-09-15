@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool isPrime(x)
+int isPrime(x)
 {
     if (x == 2) {
         return true;

@@ -38,6 +38,13 @@ find_char.c:43:23: error: ‘lenght’ undeclared (first use in this function); 
 
 Gli ulteriori messaggi di errore sono conseguenza di questi errori.
 
+<details>
+  <summary>Suggerimenti</summary>
+  1. Per risolvere il primo errore, aggiungere la dichiarazione della funzione all'inizio del file, prima del main.
+  2. Per il secondo errore, è necessario aggiungere un `#include` della libreria `string.h`.
+  3. Per il terzo errore, occorre correggere il nome della variabile (deve combaciare con la dichiarazione).
+</details>
+
 
 ## Sintassi
 
@@ -62,6 +69,14 @@ Nel caso che i token non rispettino le regole del linguaggio, il compilatore seg
 
 **Esercizio**: Risolvere il [programma con errori di sintassi, nella cartella "2-syntax/"](2-syntax)
 
+<details>
+  <summary>Suggerimenti</summary>
+  1. Aggiungere il `;` mancante (va inserito alla linea precedente all'errore)
+  2. Aggiungere la parentesi tonda mancante
+  3. Aggiungere la virgola mancante
+</details>
+
+
 
 ## Pre-processore
 
@@ -74,6 +89,14 @@ Il pre-processore è un software che viene chiamato dal compilatore **prima** di
 Occorre prestare attenzione alla corretta sintassi delle istruzioni del preprocessore. Ad esempio, il corretto uso degli spazi, parentesi e punteggiatura in `#define`. Questi errori sono difficili da risolvere: il messaggio di errore del compilatore non mostra il codice originale (es. la macro `N`), ma il codice pre-processato (ossia il valore `100`)!
 
 **Esercizio**: Risolvere il [programma con errore nelle direttive al pre-processore, nella cartella "3-preprocessor/"](3-preprocessor)
+
+<details>
+  <summary>Suggerimenti</summary>
+  1. Rimuovere `;` dal valore indicato in `#define`
+</details>
+
+
+
 
 
 ## Linking
@@ -101,6 +124,14 @@ Nella fase di collegamento, il *linker* controllerà che le variabili e funzioni
 
 **Esercizio**: Risolvere il [programma con errore in fase di linking, nella cartella "4-linking/"](4-linking)
 
+<details>
+  <summary>Suggerimenti</summary>
+  1. Nel file `main.c`, correggere il nome della funzione nella dichiarazione esterna
+</details>
+
+
+
+
 
 ## Librerie dinamiche
 
@@ -113,6 +144,13 @@ Ad esempio, le funzioni dello standard C (`printf`, `strcat`, `malloc`, e altre)
 Per predisporre il caricamento delle librerie dinamiche, è necessario compilare il programma con l'opzione `-l` seguito dal suffisso del nome della libreria (es. `-lssl` per la libreria `libssl`). Fa eccezione la libreria `libc`, che è sempre collegata dinamicamente senza bisogno di indicarla.
 
 **Esercizio**: Risolvere il [programma con errore nell'uso di librerie dinamiche, nella cartella "5-lib/"](5-lib). Consultare il manuale della funzione `sqrt` per determinare quale libreria è necessaria, e correggere il `Makefile`.
+
+<details>
+  <summary>Suggerimenti</summary>
+  1. Lanciare il comando `man sqrt` per consultare il manuale della funzione `sqrt()`. Premere `q` per uscire dal manuale.
+  2. Modificare la prima regola nel `Makefile`, aggiungendo l'opzione `-l` per collegare la libreria `libm`. L'opzione è indicata nel manuale.
+</details>
+
 
 
 
