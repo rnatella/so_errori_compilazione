@@ -1,4 +1,4 @@
-# Errori di programmazione comuni
+# Esercitazione: come correggere gli errori di compilazione
 
 ## Dichiarazioni
 
@@ -15,12 +15,33 @@ Nel caso delle funzioni, è necessario anche fornire la **definizione** del codi
 
 Nel caso delle variabili locali, non è necessaria una definizione (la dichiarazione funge anche da definizione). Nel caso delle variabili globali, è necessario distinguere tra dichiarazione e definizione, come sarà spiegato più avanti.
 
-**Esercizio**: Risolvere il [programma con errori di dichiarazione, nella cartella "1-declarations/"](1-declarations)
+**Esercizio**: Correggere il [programma con errori di dichiarazione, nella cartella "1-declarations/"](1-declarations)
+
+Il compilatore segnala 3 errori:
+```
+find_char.c: In function ‘main’:
+find_char.c:15:15: warning: implicit declaration of function ‘first_occurrence’ [-Wimplicit-function-declaration]
+   15 |   int index = first_occurrence(string,character);
+
+
+find_char.c:39:16: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+   39 |   int length = strlen(string);
+      |                ^~~~~~
+find_char.c:2:1: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+
+
+find_char.c:43:23: error: ‘lenght’ undeclared (first use in this function); did you mean ‘length’?
+   43 |   for (int i = 0; i < lenght; i++)
+      |                       ^~~~~~
+      |                       length
+```
+
+Gli ulteriori messaggi di errore sono conseguenza di questi errori.
 
 
 ## Sintassi
 
-Il compilatore legge, una alla volta, le parole nel programma (dette "token"). Il compilatore controlla che le parole rispettino le regole del linguaggio di programmazione.
+Il compilatore legge, una alla volta, le parole nel programma (dette "token"). Il compilatore controlla che l'ordine e il tipo delle parole rispettino le regole del linguaggio di programmazione ("sintassi").
 
 Quando si inizia a leggere un file, il compilatore si aspetta una dichiarazione (di variabile, funzione, tipo, etc.). All'interno delle definizioni delle funzioni (ad esempio `main`), il compilatore si aspetta istruzioni di assegnazione, cicli, etc.
 
@@ -28,13 +49,13 @@ Considera il seguente esempio:
 
 ![](images/sintassi1.png)
 
-Il compilatore vede il programma come la seguente sequenza di token. Il compilatore legge inizialmente le parole `void`, poi `prova`, e poi la parentesi `(`. Conclude che il programma sta dichiarando una funzione. Da questo punto in poi, si aspetta una dichiarazione di uno o più parametri (es. `int parametro`), e poi la parentesi `)`.
+Il compilatore vede il programma come la seguente sequenza di token. Il compilatore legge inizialmente le parole `void`, poi `prova`, e poi la parentesi `(`. Arrivato a questo punto, il compilatore determina che il programma sta dichiarando una funzione. Da questo punto in poi, si aspetta una dichiarazione di uno o più parametri (es. `int parametro`), e poi la parentesi `)`.
 
 Dalla presenza della parentesi `{`, il compilatore conclude che la dichiarazione è seguita dalla definizione della funzione. Al suo interno troverà due assegnazioni e una chiamata alla funzione `printf`.
 
 ![](images/sintassi2.png)
 
-Nel caso che i token non rispettino le regole del linguaggio, il compilatore segnala un errore. Ad esempio, ogni parentesi `(` deve essere accoppiata a una parentesi `)`, ed ogni istruzione deve terminare con il punto e virgola `;`.
+Nel caso che i token non rispettino le regole del linguaggio, il compilatore segnala un errore di sintassi. Ad esempio, ogni parentesi `(` deve essere accoppiata a una parentesi `)`, ed ogni istruzione deve terminare con il punto e virgola `;`.
 
 ![](images/sintassi3.png)
 
@@ -89,12 +110,12 @@ Ad esempio, le funzioni dello standard C (`printf`, `strcat`, `malloc`, e altre)
 
 ![](images/lib.png)
 
-Per predisporre il caricamento delle librerie dinamiche, è necessario compilare il programma con l'opzione `-l` seguito dal suffisso del nome della libreria (es. `-lssl` per la libreria `libssl`). Fa eccezione la libreria `libc`, che è di default sempre collegata dinamicamente.
+Per predisporre il caricamento delle librerie dinamiche, è necessario compilare il programma con l'opzione `-l` seguito dal suffisso del nome della libreria (es. `-lssl` per la libreria `libssl`). Fa eccezione la libreria `libc`, che è sempre collegata dinamicamente senza bisogno di indicarla.
 
 **Esercizio**: Risolvere il [programma con errore nell'uso di librerie dinamiche, nella cartella "5-lib/"](5-lib). Consultare il manuale della funzione `sqrt` per determinare quale libreria è necessaria, e correggere il `Makefile`.
 
 
-## Segmentation Fault
+## Segmentation Fault (esercizio di approfondimento sul debugging)
 
 Anche se il programma compila correttamente, è possibile che si verifichino errori durante l'esecuzione. Un errore frequente è l'utilizzo errato dei puntatori: il programma legge/scrive in memoria usando un puntatore che contiene un indirizzo di memoria errato. In questo caso, la CPU solleva una eccezione (es. "indirizzo illegale"), che il sistema operativo gestisce "uccidendo" il processo.
 
