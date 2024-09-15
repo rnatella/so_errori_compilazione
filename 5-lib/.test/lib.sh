@@ -2,7 +2,7 @@
 
 source $(dirname "$0")/../../.test/test.sh
 
-BINARY=radine
+BINARY=radice
 OUTPUT=/tmp/minimo.txt
 TIMEOUT=30
 MAKE_RULE=$BINARY
