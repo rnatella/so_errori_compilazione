@@ -1,5 +1,7 @@
 # Esercitazione: come correggere gli errori più comuni di compilazione
 
+![Points badge](../../blob/badges/.github/badges/points.svg)
+
 ## Dichiarazioni
 
 Nel linguaggio C, prima che una variabile o funzione sia usata nel programma, deve essere **preceduta da una dichiarazione**. La dichiarazione indica il tipo della variabile, o il tipo dei parametri per le funzioni.
